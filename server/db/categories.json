@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Мобільні телефони",
+    "img": "https://video.rozetka.com.ua/img_superportal/smartfony_tv_i_elektronika/mobilnye_telefony.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Монітори",
+    "img": "https://video.rozetka.com.ua/img_superportal/smartfony_tv_i_elektronika/televizory.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Ноутбуки",
+    "img": "https://video.rozetka.com.ua/img_superportal/kompyutery_i_noutbuki/1.1.png"
+  },
+  {
+    "id": 4,
+    "title": "Принтери",
+    "img": "https://video.rozetka.com.ua/img_superportal/kompyutery_i_noutbuki/2.4.png"
+  }
+]
