@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Divider, Paper, Stack, Tab, Tabs} from "@material-ui/core";
 import TabPanel from "./TabPanel";
 import Loader from "./UI/loader/loader";
+import PropTypes from "prop-types";
 
 const TabList = ({fetchUrl}) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -55,7 +56,7 @@ const TabList = ({fetchUrl}) => {
               </Tabs>
               <Divider/>
               {tabs.map(el => el.id === currentTab &&
-                  <TabPanel key={el.id} body={el.body} img={el.img}/>)
+                  <TabPanel key={el.id} panel={el}/>)
               }
             </Stack>
         </Loader>
@@ -63,5 +64,9 @@ const TabList = ({fetchUrl}) => {
     </Stack>
   );
 };
+
+TabList.propTypes = {
+  fetchUrl: PropTypes.string,
+}
 
 export default TabList;

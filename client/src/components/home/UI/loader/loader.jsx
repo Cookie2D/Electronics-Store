@@ -1,5 +1,6 @@
 import React from 'react';
 import {CircularProgress} from "@material-ui/core";
+import PropTypes from 'prop-types';
 
 const Loader = (props) => {
   return (
@@ -11,5 +12,9 @@ const Loader = (props) => {
     </div>
   );
 };
+
+Loader.propTypes = {
+  loaded: PropTypes.bool.isRequired,
+}
 
 export default Loader;
