@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {CircularProgress, Paper, Stack, Tab, Tabs} from "@material-ui/core";
+import {CircularProgress, Divider, Paper, Stack, Tab, Tabs} from "@material-ui/core";
 import TabPanel from "./TabPanel";
+import {DeliveryDining} from "@mui/icons-material";
 
 const TabList = () => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -46,13 +47,14 @@ const TabList = () => {
     <Stack alignItems="center">
       <Paper elevation={2} style={{maxWidth: 500, padding: 25}}>
         {isLoaded ?
-          <Stack spacing={4}>
+          <Stack spacing={2}>
             <Tabs value={currentTab} onChange={handleChange} centered>
               {
                 tabs.map(el =>
                   <Tab key={el.id} label={el.title}/>)
               }
             </Tabs>
+            <Divider/>
             {
               tabs.map(el => el.id === currentTab &&
                 <TabPanel key={el.id} body={el.body} img={el.img}/>)
