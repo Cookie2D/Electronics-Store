@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {CircularProgress, Divider, Paper, Stack, Tab, Tabs} from "@material-ui/core";
+import {Divider, Paper, Stack, Tab, Tabs} from "@material-ui/core";
 import TabPanel from "./TabPanel";
-import {DeliveryDining} from "@mui/icons-material";
+import Loader from "./UI/loader/loader";
 
-const TabList = () => {
+const TabList = ({fetchUrl}) => {
   const [currentTab, setCurrentTab] = useState(0);
   const [tabs, setTabs] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,35 +33,32 @@ const TabList = () => {
     ]
     // remove the comments when creating the server (get tabs)
 
-    // fetch('http://localhost:4000/tabs')
+    // fetch(fetchUrl)
     //   .then(res => res.json())
     //   .then(data => {
     //     setTabs(data);
     //     setIsLoaded(true);
     //   })
-    setTabs(json);
-    setIsLoaded(true);
+    setTabs(json); // rm with serv
+    setIsLoaded(true); //rm with serv
   }, [])
 
   return (
     <Stack alignItems="center">
       <Paper elevation={2} style={{maxWidth: 500, padding: 25}}>
-        {isLoaded ?
-          <Stack spacing={2}>
-            <Tabs value={currentTab} onChange={handleChange} centered>
-              {
-                tabs.map(el =>
-                  <Tab key={el.id} label={el.title}/>)
+        <Loader loaded={isLoaded}>
+            <Stack spacing={2}>
+              <Tabs value={currentTab} onChange={handleChange} centered>
+                {tabs.map(el =>
+                    <Tab key={el.id} label={el.title}/>)
+                }
+              </Tabs>
+              <Divider/>
+              {tabs.map(el => el.id === currentTab &&
+                  <TabPanel key={el.id} body={el.body} img={el.img}/>)
               }
-            </Tabs>
-            <Divider/>
-            {
-              tabs.map(el => el.id === currentTab &&
-                <TabPanel key={el.id} body={el.body} img={el.img}/>)
-            }
-          </Stack>
-          : <CircularProgress/>
-        }
+            </Stack>
+        </Loader>
       </Paper>
     </Stack>
   );
