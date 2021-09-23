@@ -2,7 +2,6 @@ import React from 'react';
 import Banner from "../Banner/Banner";
 import Cardlist from "../Cardlist/Cardlist";
 import {makeStyles} from "@material-ui/styles";
-import {Container} from "@material-ui/core";
 
 
 const useStyles = makeStyles({

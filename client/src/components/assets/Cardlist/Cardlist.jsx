@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import CardItem from "../CardItem/CardItem";
 import Loader from "../Loader/Loader";
-import {Box, Button, Container, CssBaseline, Grid, Typography} from "@material-ui/core";
+import {Box, Button, CssBaseline, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 
 
@@ -37,39 +37,32 @@ const Cardlist = () => {
     }
 
     useEffect(() => {
-        fetchGoods().then(data => setState(data));
         setGoodItems(state => state + 3);
+        fetchGoods().then(data => setState(data));
+
     }, [])
 
     useEffect(() => {
         fetchGoods()
-            .then(data => setState(data))
+            .then(data => {
+                if (data.length) setState(data)
+            })
     }, [goodItems])
 
     const onClickHandler = () => {
         setGoodItems(state => state + 3);
     };
 
-    if (state.length === 0) {
-        return (
-            <Box className={`${classes.wrap + ' ' + classes.listItem}`} style={{height: '300px'}}>
-                <Typography gutterBottom variant="h6" component="h2" style={{margin: 0}}>
-                    LOADING ...
-                </Typography>
-                <Loader/>
-            </Box>
-        )
-
-    } else {
-        return (
-            <>
-                <CssBaseline/>
-                <Box className={classes.wrap}>
+    return (
+        <>
+            <CssBaseline/>
+            <Box className={classes.wrap}>
+                <Loader loaded={!!state.length}>
                     <Grid container spacing={8} className={classes.listItem}>
                         {
                             state.map(i => (
-                                <Grid item>
-                                    <CardItem {...i} key={i.id}/>
+                                <Grid item key={i.id}>
+                                    <CardItem {...i} />
                                 </Grid>
                             ))
                         }
@@ -79,10 +72,10 @@ const Cardlist = () => {
                             onClick={onClickHandler}
                             style={state.length < goodItems ? {display: 'none'} : {display: 'inline-block'}}
                     >MORE</Button>
-                </Box>
-            </>
-        );
-    }
+                </Loader>
+            </Box>
+        </>
+    );
 };
 
 export default Cardlist;
