@@ -1,8 +1,7 @@
 import React from 'react';
-import {Box, Button, Card, Container, Paper, Typography} from "@material-ui/core";
+import {Box, Button, Container, Typography} from "@material-ui/core";
 import {NavLink} from "react-router-dom";
 import {createStyles, makeStyles} from "@material-ui/styles";
-import * as url from "url";
 
 const useStyles = makeStyles(() => createStyles({
   container: {
