@@ -20,7 +20,7 @@ const categories = require('./router/categories');
 
 app.use("/api/goods", goods);
 app.use("/api/banner", banner);
-app.use("/api/categories", banner);
+app.use("/api/categories", categories);
 
 app.listen(PORT, () => {
   console.log(`Server has been started on port: ${PORT}...`);

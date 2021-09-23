@@ -1,13 +1,23 @@
 import React from 'react';
 import Banner from "../Banner/Banner";
-import Cadrlist from "../Cardlist/Cadrlist";
+import Cardlist from "../Cardlist/Cardlist";
+import {makeStyles} from "@material-ui/styles";
+import {Container} from "@material-ui/core";
+
+
+const useStyles = makeStyles({
+    back: {
+        background: '#cfd8dc',
+    }
+});
 
 const Body = () => {
+    const classes = useStyles();
     return (
-        <div>
-            <Banner/>
-            <Cadrlist/>
-        </div>
+            <div className={classes.back}>
+                <Banner/>
+                <Cardlist/>
+            </div>
     );
 };
 
