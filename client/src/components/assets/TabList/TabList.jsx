@@ -22,6 +22,13 @@ const TabList = ({fetchUrl}) => {
       marginTop: 15,
       display: 'flex',
       margin: '0 auto',
+    },
+    paper: {
+      padding: 20,
+      ['@media (max-width:400px)']: { // eslint-disable-line no-useless-computed-key
+        fontSize: 6,
+        padding: 0
+      }
     }
   }));
 
@@ -53,7 +60,7 @@ const TabList = ({fetchUrl}) => {
   const classes = useStyles();
   return (
     <Grid className={classes.Container}>
-      <Paper elevation={4} style={{padding: 10}}>
+      <Paper elevation={4} className={classes.paper}>
         {tabs.length === 0 && isLoaded && <Typography variant="h2">Items not found</Typography>}
         <Loader loaded={isLoaded}>
           <Grid>
