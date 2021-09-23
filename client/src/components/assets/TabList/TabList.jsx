@@ -53,7 +53,7 @@ const TabList = ({fetchUrl}) => {
   const classes = useStyles();
   return (
     <Grid className={classes.Container}>
-      <Paper elevation={4} style={{maxWidth: 500, padding: 25}}>
+      <Paper elevation={4} style={{padding: 10}}>
         {tabs.length === 0 && isLoaded && <Typography variant="h2">Items not found</Typography>}
         <Loader loaded={isLoaded}>
           <Grid>
