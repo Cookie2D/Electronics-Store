@@ -27,18 +27,25 @@ const TabList = ({fetchUrl}) => {
 
 
   useEffect(() => {
-    fetch(fetchUrl)
-      .then(res => res.ok
-        ? res.json()
-        : Promise.reject('Server error ' + res.status)
-      )
-      .then(data => {
-        setTabs(data);
-        setIsLoaded(true);
-      }).catch(e => {
-      setTabs([]);
+    if (localStorage.tabs) {
+      setTabs(JSON.parse(localStorage.tabs));
       setIsLoaded(true)
-    })
+    } else {
+      fetch(fetchUrl)
+        .then(res => res.ok
+          ? res.json()
+          : Promise.reject('Server error ' + res.status)
+        )
+        .then(data => {
+          localStorage.tabs = JSON.stringify(data);
+          setTabs(data);
+          setIsLoaded(true);
+        }).catch(e => {
+        setTabs([]);
+        setIsLoaded(true)
+      })
+    }
+
 
   }, [fetchUrl])
 
