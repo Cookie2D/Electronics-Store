@@ -1,10 +1,16 @@
-import {Button} from "@material-ui/core";
+import {withRouter, Route, Switch} from "react-router-dom";
+import NotFound from "./components/pages/NotFound";
+import Home from "./components/pages/Home";
+
 
 function App() {
   return (
-    <div className="App">
-      <Button variant="contained">Hello World</Button>
-    </div>
+    <Switch>
+        <Route exact path="/">
+            <Home />
+        </Route>
+        <Route component={NotFound} />
+    </Switch>
   );
 }
 
