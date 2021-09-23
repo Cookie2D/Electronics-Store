@@ -3,9 +3,7 @@ const path = require("path");
 const  url = require('url')
 
 exports.getCategories = function (req, res) {
-    console.log(req.params, ' -req.params')
     let urlRequest = url.parse(req.url, true);
-    console.log(urlRequest.query.item, ' - urlRequest.query');
 
     fs.readFile(path.join(__dirname, "../db/categories.json"), "utf8", (err, data) => {
 
