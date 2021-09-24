@@ -1,75 +1,93 @@
 import React from 'react';
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import logo from './logo_1.png'
+import { makeStyles } from '@material-ui/core/styles';
+import { AppBar, Toolbar, Typography, Button, IconButton, Box } from '@material-ui/core';
+import Menu from "../Menu/Menu";
+import logo from "./logo_1.png";
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
-    return (
-        <Box sx={{
-            display: "flex",
-            justifyContent: 'space-around',
-            backgroundColor: '#f2f5f3',
-            backgroundImage: 'linear-gradient(black, black)',
-            backgroundSize: '100% 2px',
-            backgroundPosition: 'bottom',
-            backgroundRepeat: 'no-repeat',
-         }}>
-      
-      
-      {/* main nav */}
-            <Box sx={{
-              display: "flex",
-              justifyContent: 'space-around',
-              width: '1600px',
-              margin: '0px auto',
-              alignItems: 'center',
-              cursor: 'pointer',
-      
-            }}>
-      
-      
-      {/* logo */}
-              <Box sx={{
-                display: 'flex',
-                paddingLeft: '100px',
-                marginBottom: '5px',
-                        }}>
-                <img src={logo} alt={"logo"} /> 
-                </Box>
-      
-      
-      {/* nav menu */}
-              <Box sx={{
-                display: "flex",
-                justifyContent: 'space-between',
-                margin: '0px auto',
-                width: '400px'
-      
-              }}>
-                <Typography sx={{
-                  fontSize: 'h6.fontSize',
-                  ":hover": { backgroundColor: 'rgba(17, 18, 19, 0.29)', boxShadow: '15px -9px 7px -8px rgba(17, 18, 19, 0.29)', transition: '1.2s' },
-                  borderRadius: '20px',
-                  padding: '2px 40px'
-                }}>Home</Typography>
-      
-                <Typography sx={{
-                  fontSize: 'h6.fontSize',
-                  ":hover": { backgroundColor: 'rgba(17, 18, 19, 0.29)', boxShadow: '15px -9px 7px -8px rgba(17, 18, 19, 0.29)', transition: '1.2s' },
-                  borderRadius: '20px',
-                  padding: '2px 40px'
-                }}>Catalog</Typography>
-      
-                <Typography sx={{
-                  fontSize: 'h6.fontSize',
-                  ":hover": { backgroundColor: 'rgba(17, 18, 19, 0.29)', boxShadow: '15px -9px 7px -8px rgba(17, 18, 19, 0.29)', transition: '1.2s' },
-                  borderRadius: '20px',
-                  padding: '2px 40px'
-                }}>Cart</Typography>
-              </Box>
-            </Box>
+const useStyles = makeStyles((theme) => ({
+  menuButton: {
+    marginRight: theme.spacing(2),
+    visibility: 'hidden',
+    [theme.breakpoints.down('xs')]: {
+      visibility: 'visible'
+    }
+
+  },
+  icon: {
+    borderRadius: '50%',
+    transition: '1s',
+    '&:hover': {
+      filter: 'grayscale(100%)'
+    }
+  },
+  navIcon: {
+   paddingRight: '25px',
+  },
+
+  nav: {
+    width: "100%",
+    display: "flex",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    },
+
+  navList: {
+     display: "flex",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexGrow: 1,
+    textAlign: 'center',
+    padding: '2px 35px',
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    },
+  },
+  navItem: {
+    cursor: 'pointer',
+    flexGrow: 1,
+    borderRadius: '20px',
+   '&:hover': {
+     backgroundColor: 'rgba(17, 18, 19, 0.29)',
+     boxShadow: '15px -9px 7px -8px rgba(17, 18, 19, 0.29)',
+     transition: '1.2s'
+    }
+  }
+
+
+}));
+
+
+export default function Navbar() {
+
+  const classes = useStyles();
+
+  return (
+    <Box className={classes.nav}>
+      <AppBar position="static" >
+        <Toolbar className={classes.nav}>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <Menu props='left' />
+          </IconButton>
+          <Button color="inherit" className={classes.icon}>
+            <NavLink to='/'>
+              <img className={classes.navIcon} src={logo} alt={"logo"} />
+            </NavLink>
+          </Button>
+          <Box className={classes.navList}>
+            <Typography variant="h6" className={classes.navItem}>
+              <NavLink to='/'>
+                Home
+              </NavLink>
+            </Typography>
+            <Typography variant="h6" className={classes.navItem}>Catalog</Typography>
+            <Typography variant="h6" className={classes.navItem}>Cart</Typography>
           </Box>
-    );
-};
+        
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
 
-export default Header;
+
