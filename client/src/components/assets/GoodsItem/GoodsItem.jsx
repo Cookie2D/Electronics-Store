@@ -36,6 +36,10 @@ const useStyles = makeStyles({
     },
     btn: {
         marginTop: '2rem'
+    },
+    descript: {
+        height: '200px',
+        overflow: 'hidden'
     }
 });
 
@@ -58,7 +62,7 @@ export default function GoodsItem (props) {
                     title="Contemplative Reptile"
 
                 />
-                <CardContent>
+                <CardContent className={classes.descript}>
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.info.title}
                     </Typography>
