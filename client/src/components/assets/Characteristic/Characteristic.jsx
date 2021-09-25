@@ -1,6 +1,7 @@
 import {Box, ListItem, ListItemText} from "@material-ui/core";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import {Redirect} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     listHeader: {
@@ -12,6 +13,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Characteristic({items}) {
   const classes = useStyles();
+
+  if (!items) {
+    return <Redirect to="/notfound"/>
+  }
+
+
   if (typeof items === "object" && !Array.isArray(items)) {
     const keys = Object.keys(items);
     const values = Object.values(items);
