@@ -47,7 +47,7 @@ export default function GoodsItem (props) {
     const classes = useStyles();
     let url = `${props.url}/id:${props.info.id}`;
 
-    const {product, setProduct} = useContext(ProductContext);
+    const {setProduct} = useContext(ProductContext);
 
     const sendProduct = () => {
         setProduct(props.info)
