@@ -10,12 +10,11 @@ const useStyles = makeStyles({
     }
 });
 
-const Body = () => {
+const Body = (props) => {
     const classes = useStyles();
     return (
             <div className={classes.back}>
-                <Banner/>
-                <Cardlist/>
+                {props.children}
             </div>
     );
 };

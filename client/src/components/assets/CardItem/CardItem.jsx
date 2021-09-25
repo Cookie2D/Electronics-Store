@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -39,7 +40,9 @@ export default function CardItem(props) {
             <CardActions>
                 <Button size="small" color="primary" style={{padding: '5px 15px'}}>
                     <Typography gutterBottom variant="h6" component="h2" style={{margin: 0}}>
-                        OPEN
+                        <Link to={props.url}>
+                            OPEN
+                        </Link>
                     </Typography>
                 </Button>
             </CardActions>
