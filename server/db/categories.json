@@ -3,24 +3,28 @@
     "id": 1,
     "title": "Мобільні телефони",
     "img": "https://video.rozetka.com.ua/img_superportal/smartfony_tv_i_elektronika/mobilnye_telefony.jpg",
-    "description": "Сучасні смартфони. Найбільший асортимент серед онлайн магазинів. Apple, Samsung, Huawei, Xiaomi, та ін."
+    "description": "Сучасні смартфони. Найбільший асортимент серед онлайн магазинів. Apple, Samsung, Huawei, Xiaomi, та ін.",
+    "url": "goods/phones"
   },
   {
     "id": 2,
     "title": "Монітори",
     "img": "https://video.rozetka.com.ua/img_superportal/smartfony_tv_i_elektronika/televizory.jpg",
-    "description": "Монітори на будь-який смак, від невеликих діагоналей до велечезних. HP, LG, ASUS, BENQ, PHILIPS, SAMSUNG"
+    "description": "Монітори на будь-який смак, від невеликих діагоналей до велечезних. HP, LG, ASUS, BENQ, PHILIPS, SAMSUNG",
+    "url": "goods/screens"
   },
   {
     "id": 3,
     "title": "Ноутбуки",
     "img": "https://video.rozetka.com.ua/img_superportal/kompyutery_i_noutbuki/1.1.png",
-    "description": "В наявності асортимет ноутбуків: бюджетні, офісні, геймерські, преміальні. Apple, Acer, HP, Asus, Dell, Lenovo"
+    "description": "В наявності асортимет ноутбуків: бюджетні, офісні, геймерські, преміальні. Apple, Acer, HP, Asus, Dell, Lenovo",
+    "url": "goods/laptops"
   },
   {
     "id": 4,
     "title": "Принтери",
     "img": "https://video.rozetka.com.ua/img_superportal/kompyutery_i_noutbuki/2.4.png",
-    "description": "Принтери різних марок, відомі бренди, та моделі за доступними цінами. Cannon, HP, Epson, Xerox та ін."
+    "description": "Принтери різних марок, відомі бренди, та моделі за доступними цінами. Cannon, HP, Epson, Xerox та ін.",
+    "url": "goods/printers"
   }
 ]

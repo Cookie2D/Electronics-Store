@@ -7,6 +7,7 @@
     "img": "https://content1.rozetka.com.ua/goods/images/big/194141972.jpg",
     "price": "3800",
     "amount": "5",
+    "description" : "Современный монитор с диагональю 21.5 дюймов от компании Hewlett-Packard станет незаменимым помощником во время работы или учебы.",
     "characteristics": {
       "Дісплей": [
         {"Діагональ дисплея": "21.5'"},
@@ -35,6 +36,7 @@
     "img": "https://content.rozetka.com.ua/goods/images/big/25468534.jpg",
     "price": "6800",
     "amount": "3",
+    "description": "Новейшие мониторы для игр и развлечений имеют маркировку NVIDIA G-SYNC Compatible.",
     "characteristics": {
       "Дісплей": [
         {"Діагональ дисплея": "24.5'"},
@@ -63,6 +65,7 @@
     "img": "https://content.rozetka.com.ua/goods/images/big/73891904.jpg",
     "price": "14000",
     "amount": "2",
+    "description": "27-дюймовый игровой монитор с разрешением QHD 2560 x 1440 и новым выразительным дизайном.",
     "characteristics": {
       "Дісплей": [
         {"Діагональ дисплея": "27'"},
@@ -91,6 +94,7 @@
     "img": "https://content2.rozetka.com.ua/goods/images/big/106663814.jpg",
     "price": "8600",
     "amount": "3",
+    "description": "Поддержка частоты 144Гц, время отклика в 1 миллисекунду и совместимость с технологией синхронизации G-Sync обеспечат вам победу в любой игре.",
     "characteristics": {
       "Дісплей": [
         {"Діагональ дисплея": "27'"},
@@ -119,6 +123,7 @@
     "img": "https://content.rozetka.com.ua/goods/images/big/178039865.jpg",
     "price": "5300",
     "amount": "4",
+    "description": "Игровой дисплей ASUS VP249QGR создан для победы на профессиональной игровой арене.",
     "characteristics": {
       "Дісплей": [
         {"Діагональ дисплея": "23.8'"},
