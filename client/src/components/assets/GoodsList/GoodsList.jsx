@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import CardItem from "../CardItem/CardItem";
 import Loader from "../Loader/Loader";
-import {Box, Button, CssBaseline, Grid} from "@material-ui/core";
+import {Box, CssBaseline, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import GoodsItem from "../GoodsItem/GoodsItem";
 
@@ -30,7 +29,7 @@ const GoodsList = (props) => {
            .then(res => res.json())
            .then(data => data.length !== 0 ? setState(data) : null)
 
-    }, [])
+    }, [props.url])
 
     return (
         <>

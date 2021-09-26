@@ -39,7 +39,7 @@ const Cardlist = () => {
     useEffect(() => {
         setGoodItems(state => state + 3);
         fetchGoods().then(data => setState(data));
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -47,6 +47,7 @@ const Cardlist = () => {
             .then(data => {
                 if (data.length) setState(data)
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [goodItems])
 
     const onClickHandler = () => {

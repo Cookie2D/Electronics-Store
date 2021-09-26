@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, Container, Typography} from "@material-ui/core";
+import {Box, Button, Typography} from "@material-ui/core";
 import {NavLink} from "react-router-dom";
 import {createStyles, makeStyles} from "@material-ui/styles";
 
@@ -38,7 +38,7 @@ const NotFound = () => {
     <Box className={classes.container}>
       <Box className={classes.box}>
         <Typography variant='h1' className={classes.text}>404</Typography>
-        <Typography variant='h5' className={classes.text}>Oops.. page doesn't find</Typography>
+        <Typography variant='h5' className={classes.text}>Oops.. page not found</Typography>
         <Button variant="contained" style={{marginTop: 20}}>
           <NavLink to='/' className={classes.link}>Back to Home page</NavLink>
         </Button>
