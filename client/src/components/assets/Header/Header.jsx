@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography, Button, IconButton, Box } from '@material-
 import Menu from "../Menu/Menu";
 import logo from "./logo_1.png";
 import { NavLink } from "react-router-dom";
+import SearchBar from "material-ui-search-bar";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     }
 
   },
+
   icon: {
     borderRadius: '50%',
     transition: '1s',
@@ -22,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   navIcon: {
-   paddingRight: '25px',
+    paddingRight: '25px',
   },
 
   nav: {
@@ -30,15 +32,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: 'row',
     justifyContent: 'space-between',
-    },
+  },
 
   navList: {
-     display: "flex",
+    display: "flex",
     flexDirection: 'row',
     justifyContent: 'space-between',
     flexGrow: 1,
     textAlign: 'center',
-    padding: '2px 35px',
+    // padding: '2px 35px',
     [theme.breakpoints.down('xs')]: {
       display: 'none'
     },
@@ -47,14 +49,22 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     flexGrow: 1,
     borderRadius: '20px',
-   '&:hover': {
-     backgroundColor: 'rgba(17, 18, 19, 0.29)',
-     boxShadow: '15px -9px 7px -8px rgba(17, 18, 19, 0.29)',
-     transition: '1.2s'
+    textDecoration:'none',
+    '&:hover': {
+      // padding: '2px 2px',
+      backgroundColor: 'rgba(17, 18, 19, 0.29)',
+      boxShadow: '15px -9px 7px -8px rgba(17, 18, 19, 0.29)',
+      transition: '1.2s'
     }
+  },
+
+  navSearch: {
+    visibility: 'hidden',
+    borderRadius: '5px',
+    height: '35px',
+    width: '150px',
+    
   }
-
-
 }));
 
 
@@ -80,10 +90,18 @@ export default function Navbar() {
                 Home
               </NavLink>
             </Typography>
-            <Typography variant="h6" className={classes.navItem}>Catalog</Typography>
+            <Typography variant="h6" className={classes.navItem} >
+              <NavLink to='/SearchBar'>
+                Catalog
+              </NavLink>
+            </Typography>
             <Typography variant="h6" className={classes.navItem}>Cart</Typography>
+            <SearchBar className={classes.navSearch} />
+
           </Box>
-        
+
+
+
         </Toolbar>
       </AppBar>
     </Box>
