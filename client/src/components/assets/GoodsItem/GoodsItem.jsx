@@ -2,8 +2,6 @@ import * as React from 'react';
 import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import {Link} from "react-router-dom";
-import {useContext} from "react";
-import {ProductContext} from "../Product/ProductContext";
 
 
 const useStyles = makeStyles({
@@ -45,13 +43,7 @@ const useStyles = makeStyles({
 
 export default function GoodsItem (props) {
     const classes = useStyles();
-    let url = `${props.url}/id:${props.info.id}`;
-
-    const {setProduct} = useContext(ProductContext);
-
-    const sendProduct = () => {
-        setProduct(props.info)
-    }
+    let url = `${props.url}/${props.info.id}`;
 
     return (
         <Card className={classes.root}>
@@ -77,10 +69,10 @@ export default function GoodsItem (props) {
                         Price
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h2" style={{margin: 0}}>
-                        {props.info.price} uah
+                        {props.info.price} ₴
                     </Typography>
                 </Box>
-                <Button className={classes.btn} variant="contained" color='primary' onClick={sendProduct}>
+                <Button className={classes.btn} variant="contained" color='primary'>
                     <Link to={url} className={classes.link}>
                         VIEW
                     </Link>
