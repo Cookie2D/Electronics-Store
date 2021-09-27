@@ -5,6 +5,7 @@ import Menu from "../Menu/Menu";
 import logo from "./logo_1.png";
 import { NavLink } from "react-router-dom";
 import SearchBar from "material-ui-search-bar";
+import {Route} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -40,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     flexGrow: 1,
     textAlign: 'center',
-    // padding: '2px 35px',
     [theme.breakpoints.down('xs')]: {
       display: 'none'
     },
@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '20px',
     textDecoration:'none',
     '&:hover': {
-      // padding: '2px 2px',
       backgroundColor: 'rgba(17, 18, 19, 0.29)',
       boxShadow: '15px -9px 7px -8px rgba(17, 18, 19, 0.29)',
       transition: '1.2s'
@@ -59,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   navSearch: {
-    visibility: 'hidden',
     borderRadius: '5px',
     height: '35px',
     width: '150px',
+    marginRight:'30px',
     
   }
 }));
@@ -91,12 +90,14 @@ export default function Navbar() {
               </NavLink>
             </Typography>
             <Typography variant="h6" className={classes.navItem} >
-              <NavLink to='/SearchBar'>
+              <NavLink to='/catalog'>
                 Catalog
               </NavLink>
             </Typography>
             <Typography variant="h6" className={classes.navItem}>Cart</Typography>
-            <SearchBar className={classes.navSearch} />
+            <Route path="/catalog">
+                <SearchBar className={classes.navSearch} />
+            </Route>
 
           </Box>
 
