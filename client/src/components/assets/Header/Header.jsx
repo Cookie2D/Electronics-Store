@@ -95,7 +95,7 @@ export default function Navbar() {
               </NavLink>
             </Typography>
             <Typography variant="h6" className={classes.navItem}>Cart</Typography>
-            <Route path="/goods/:product_type">
+            <Route exact path="/goods/:product_type">
                 <SearchBar className={classes.navSearch} />
             </Route>
 
