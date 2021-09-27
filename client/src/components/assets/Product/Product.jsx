@@ -57,7 +57,7 @@ const useStyles = makeStyles(() => createStyles({
     backgroundColor: "white",
     overflow: 'auto',
     margin: "0 auto",
-    maxHeight: 500,
+    maxHeight: 1000,
   },
 }))
 
@@ -66,7 +66,6 @@ const Product = (props) => {
   const [prevPath, setPrevPath] = useState('');
   const [isLoaded, setIsLoaded] = useState(false)
   const [product, setProduct] = useState([]);
-  const characteristics = product.characteristics;
 
 
   useEffect(() => {
@@ -114,7 +113,7 @@ const Product = (props) => {
           </Grid>
           <Grid container item xs className={classes.characteristic}>
             <List className={classes.listRoot}>
-              <Characteristic items={characteristics}/>
+              <Characteristic items={product.characteristics}/>
             </List>
           </Grid>
         </Grid>
