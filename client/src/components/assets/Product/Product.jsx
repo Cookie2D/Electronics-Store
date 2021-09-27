@@ -57,7 +57,7 @@ const useStyles = makeStyles(() => createStyles({
     backgroundColor: "white",
     overflow: 'auto',
     margin: "0 auto",
-    maxHeight: 1000,
+    maxHeight: 500,
   },
 }))
 
