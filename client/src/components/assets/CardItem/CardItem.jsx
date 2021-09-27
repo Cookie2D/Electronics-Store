@@ -40,7 +40,7 @@ export default function CardItem(props) {
             <CardActions>
                 <Button size="small" color="primary" style={{padding: '5px 15px'}}>
                     <Typography gutterBottom variant="h6" component="h2" style={{margin: 0}}>
-                        <Link to={props.url}>
+                        <Link to={`goods/${props.category}`}>
                             OPEN
                         </Link>
                     </Typography>

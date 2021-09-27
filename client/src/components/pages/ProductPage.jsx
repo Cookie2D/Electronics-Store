@@ -7,13 +7,12 @@ import Product from "../assets/Product/Product";
 
 
 
-const ProductPage = () => {
+const ProductPage = (props) => {
   return (
     <Container>
       <Header />
       <Body>
-
-        <Product />
+        <Product url={props.match.url}/>
       </Body>
       <Footer />
     </Container>

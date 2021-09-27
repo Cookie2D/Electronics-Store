@@ -38,7 +38,8 @@ const GoodsList = (props) => {
         }
       })
 
-  }, [props.url])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
