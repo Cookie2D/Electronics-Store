@@ -2,12 +2,14 @@ import * as React from 'react';
 import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import {Link} from "react-router-dom";
+import {useEffect} from "react";
 
 
 const useStyles = makeStyles({
     root: {
         width: '345px',
-        padding: '12px'
+        // height: '535px',
+        padding: '12px',
     },
     media: {
         height: '200px',
@@ -43,7 +45,12 @@ const useStyles = makeStyles({
 
 export default function GoodsItem (props) {
     const classes = useStyles();
-    let url = `${props.url}/${props.info.id}`;
+    // let url = `${props.url}/${props.info.id}`;
+    let url = `${props.info.type}/${props.info.id}`;
+    useEffect(() => {
+        console.log(props.info.id, ' - props.info.id');
+
+    } ,[])
 
     return (
         <Card className={classes.root}>
@@ -69,7 +76,7 @@ export default function GoodsItem (props) {
                         Price
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h2" style={{margin: 0}}>
-                        {props.info.price} ₴
+                        {props.info.price}
                     </Typography>
                 </Box>
                 <Button className={classes.btn} variant="contained" color='primary'>

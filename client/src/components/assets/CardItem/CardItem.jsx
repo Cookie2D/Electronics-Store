@@ -7,7 +7,9 @@ import {Link} from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         width: '345px',
-        padding: '12px'
+        // height: '535px',
+        padding: '12px',
+        // display: 'flex',
     },
     media: {
         height: '200px',
