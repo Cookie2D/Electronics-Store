@@ -37,8 +37,6 @@ const GoodsList = (props) => {
           setIsLoaded(true)
         }
       })
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

@@ -1,11 +1,14 @@
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, IconButton, Box } from '@material-ui/core';
 import Menu from "../Menu/Menu";
 import logo from "./logo_1.png";
-import { NavLink } from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import SearchBar from "material-ui-search-bar";
 import {Route} from "react-router-dom";
+import {useSearch} from "../../content/searchContext";
+
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -68,6 +71,23 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Navbar() {
+  const history = useHistory();
+  const {searchSet} = useSearch();
+  const searchHandel = (e) => {
+    if(e.key === 'Enter') {
+      let name = e.target.value;
+      console.log(name, ' - name')
+      let newUrl = new URL ("http://localhost:4000/api/goods");
+      newUrl.searchParams.set('name', name);
+      console.log(newUrl)
+      fetch(newUrl)
+          .then(res => res.json())
+          .then(data => {
+            searchSet(data);
+            history.push(`/goods/search`);
+          })
+    }
+  }
 
   const classes = useStyles();
 
@@ -96,7 +116,7 @@ export default function Navbar() {
             </Typography>
             <Typography variant="h6" className={classes.navItem}>Cart</Typography>
             <Route exact path="/goods/:product_type">
-                <SearchBar className={classes.navSearch} />
+                <SearchBar className={classes.navSearch} onKeyPress={searchHandel}/>
             </Route>
 
           </Box>
