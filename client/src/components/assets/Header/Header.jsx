@@ -77,7 +77,7 @@ export default function Navbar() {
   const searchHandel = (e) => {
     if(e.key === 'Enter') {
       let name = e.target.value;
-      let newUrl = new URL ("http://localhost:3000/api/goods");
+      let newUrl = new URL ("http://localhost:4000/api/goods");
       newUrl.searchParams.set('name', name);
       axios.get(newUrl)
           .then(res => res.json())
