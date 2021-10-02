@@ -8,6 +8,7 @@ import {NavLink, useHistory} from "react-router-dom";
 import SearchBar from "material-ui-search-bar";
 import {Route} from "react-router-dom";
 import {useSearch} from "../../content/searchContext";
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -76,9 +77,9 @@ export default function Navbar() {
   const searchHandel = (e) => {
     if(e.key === 'Enter') {
       let name = e.target.value;
-      let newUrl = new URL ("http://localhost:4000/api/goods");
+      let newUrl = new URL ("http://localhost:3000/api/goods");
       newUrl.searchParams.set('name', name);
-      fetch(newUrl)
+      axios.get(newUrl)
           .then(res => res.json())
           .then(data => {
             searchSet(data);

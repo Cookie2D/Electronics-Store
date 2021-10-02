@@ -3,6 +3,7 @@ import CardItem from "../CardItem/CardItem";
 import Loader from "../Loader/Loader";
 import {Box, Button, CssBaseline, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
+import axios from 'axios';
 
 
 const useStyles = makeStyles({
@@ -31,19 +32,19 @@ const Cardlist = () => {
         return url
     }
 
-    const fetchGoods = () => {
-        return fetch(urlGenerator())
+    const axiosGoods = () => {
+        return axios.get(urlGenerator())
             .then(res => res.json())
     }
 
     useEffect(() => {
         setGoodItems(state => state + 3);
-        fetchGoods().then(data => setState(data));
+        axiosGoods().then(data => setState(data));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-        fetchGoods()
+        axiosGoods()
             .then(data => {
                 if (data.length) setState(data)
             })

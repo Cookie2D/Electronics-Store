@@ -4,6 +4,7 @@ import {Box, CssBaseline, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import GoodsItem from "../GoodsItem/GoodsItem";
 import Filter from "../Filter/Filter";
+import axios from 'axios';
 
 
 const useStyles = makeStyles({
@@ -27,7 +28,7 @@ const GoodsList = (props) => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api${props.url}`)
+    axios.get(`http://localhost:4000/api${props.url}`)
       .then(res => res.json())
       .then(data => {
         if (data.length !== 0) {

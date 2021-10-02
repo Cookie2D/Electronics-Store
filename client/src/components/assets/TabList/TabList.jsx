@@ -4,8 +4,9 @@ import TabPanel from "../TabPanel/TabPanel";
 import Loader from "../Loader/Loader";
 import PropTypes from "prop-types";
 import {createStyles, makeStyles} from "@material-ui/styles";
+import axios from 'axios';
 
-const TabList = ({fetchUrl}) => {
+const TabList = ({axiosUrl}) => {
   const [currentTab, setCurrentTab] = useState(0);
   const [tabs, setTabs] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,7 +39,7 @@ const TabList = ({fetchUrl}) => {
       setTabs(JSON.parse(localStorage.tabs));
       setIsLoaded(true)
     } else {
-      fetch(fetchUrl)
+      axios.get(axiosUrl)
         .then(res => res.ok
           ? res.json()
           : Promise.reject('Server error ' + res.status)
@@ -54,7 +55,7 @@ const TabList = ({fetchUrl}) => {
     }
 
 
-  }, [fetchUrl])
+  }, [axiosUrl])
 
 
   const classes = useStyles();
@@ -86,7 +87,7 @@ const TabList = ({fetchUrl}) => {
 };
 
 TabList.propTypes = {
-  fetchUrl: PropTypes.string,
+  axiosUrl: PropTypes.string,
 }
 
 export default TabList;
