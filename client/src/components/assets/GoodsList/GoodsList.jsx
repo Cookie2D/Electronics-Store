@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Loader from "../Loader/Loader";
-import {Box, CssBaseline, Grid} from "@material-ui/core";
+import {Box, CssBaseline, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import GoodsItem from "../GoodsItem/GoodsItem";
 import Filter from "../Filter/Filter";
@@ -23,39 +23,45 @@ const useStyles = makeStyles({
 const GoodsList = (props) => {
 
   const classes = useStyles();
-  const [state, setState] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false)
   const [goods, setGoods] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     fetch(`http://localhost:4000/api${props.url}`)
       .then(res => res.json())
       .then(data => {
         if (data.length !== 0) {
-          setState(data);
-          setGoods(data)
+          setGoods(data);
           setIsLoaded(true)
         }
       })
+    // eslint-disable-next-line
   }, [])
 
   return (
     <>
-      <Filter goods={goods} setGoods={setState}/>
+      <Filter setGoods={setGoods} url={props.url}/>
       <CssBaseline/>
-      <Box className={classes.wrap}>
-        <Loader loaded={isLoaded}>
-          <Grid container spacing={8} className={classes.listItem}>
-            {
-              state.map(i => (
-                <Grid item key={i.id}>
-                  <GoodsItem info={i} url={props.url}/>
-                </Grid>
-              ))
-            }
-          </Grid>
-        </Loader>
-      </Box>
+      <Loader loaded={isLoaded}>
+      {goods.length === 0 ? (
+        <Typography gutterBottom variant="h6">
+          НЕМАЄ ІНФОРМАЦІЇ ПО ВАШОМУ ЗАПИТУ
+        </Typography>
+      ) : (
+        <Box className={classes.wrap}>
+
+            <Grid container spacing={8} className={classes.listItem}>
+              {
+                goods.map(i => (
+                  <Grid item key={i.id}>
+                    <GoodsItem info={i} url={props.url}/>
+                  </Grid>
+                ))
+              }
+            </Grid>
+        </Box>
+        )}
+      </Loader>
     </>
   );
 };

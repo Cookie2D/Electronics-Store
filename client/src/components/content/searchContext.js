@@ -7,7 +7,6 @@ export const SearchProvider = ({children}) => {
     const [search, setSearch] = useState([]);
 
     const searchSet = (data, name) => {
-        console.log('works currency - ', data)
         setSearch(data);
     }
 
