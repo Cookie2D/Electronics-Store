@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Filter = ({goods, setGoods}) => {
+const Filter = ({setGoods, url}) => {
   const classes = useStyles();
-  const [cost, setCost] = React.useState('');
-  const [amount, setAmount] = React.useState('');
+  const [cost, setCost] = React.useState(0);
+  const [amount, setAmount] = React.useState(1);
 
   const handleChangeCost = (event) => {
     setCost(event.target.value);
@@ -33,11 +33,13 @@ const Filter = ({goods, setGoods}) => {
   };
 
   useEffect(() => {
-    let arr = [...goods];
-    if (cost) arr = arr.filter(e => e.price > cost);
-    if (amount) arr = arr.filter(e => e.amount >= amount);
-    setGoods(arr)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetch(`http://localhost:4000/api${url}?cost=${cost}&amount=${amount}`)
+      .then(res => res.json())
+      .then(data => {
+        let arr = data;
+        setGoods(arr);
+      });
+    // eslint-disable-next-line
   }, [cost, amount]);
 
 
@@ -46,7 +48,7 @@ const Filter = ({goods, setGoods}) => {
       <Toolbar>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="grouped-native-select">Cost</InputLabel>
-          <Select defaultValue="" id="grouped-native-select" onChange={handleChangeCost}>
+          <Select defaultValue="0" id="grouped-native-select" onChange={handleChangeCost}>
             <MenuItem value={0}>All</MenuItem>
             <MenuItem value={6000}>Medium cost</MenuItem>
             <MenuItem value={10000}>Expensive</MenuItem>
@@ -55,7 +57,7 @@ const Filter = ({goods, setGoods}) => {
 
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="grouped-select">Amount</InputLabel>
-          <Select defaultValue="" id="grouped-select" onChange={handleChangeAmount}>
+          <Select defaultValue="1" id="grouped-select" onChange={handleChangeAmount}>
             <MenuItem value={1}>1 and more</MenuItem>
             <MenuItem value={5}>5 and more</MenuItem>
             <MenuItem value={10}>10 and more</MenuItem>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSearch} from "../../content/searchContext";
 import {Box, CssBaseline, Grid, Typography} from "@material-ui/core";
 import Loader from "../Loader/Loader";
@@ -22,11 +22,8 @@ const useStyles = makeStyles({
 
 const SearchList = () => {
     const classes = useStyles();
-    const {search, searchSet} = useSearch();
+    const {search} = useSearch();
 
-    useEffect(() => {
-        console.log(search, ' - search')
-    }, [search])
     return (
         <>
             <CssBaseline/>

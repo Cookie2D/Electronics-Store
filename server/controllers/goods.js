@@ -4,11 +4,16 @@ const path = require("path");
 exports.getCategories = function (req, res) {
   fs.readFile(path.join(__dirname, `../db/goods.json`), "utf8", (err, data) => {
     if (err) {
-      console.log('get')
       res.status(500).send({message: "error loading file on server"})
     } else {
       let param = req.params.categories;
       let rez = JSON.parse(data).filter(i => i.type === param);
+
+      if (req.query.cost || req.query.amount) {
+        rez = rez.filter(e => e.price > +req.query.cost);
+        rez = rez.filter(e => e.amount >= +req.query.amount);
+      }
+
       res.status(200).send(rez);
     }
   })

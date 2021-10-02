@@ -76,10 +76,8 @@ export default function Navbar() {
   const searchHandel = (e) => {
     if(e.key === 'Enter') {
       let name = e.target.value;
-      console.log(name, ' - name')
       let newUrl = new URL ("http://localhost:4000/api/goods");
       newUrl.searchParams.set('name', name);
-      console.log(newUrl)
       fetch(newUrl)
           .then(res => res.json())
           .then(data => {

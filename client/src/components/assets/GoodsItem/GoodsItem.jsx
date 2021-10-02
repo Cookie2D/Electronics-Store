@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import {Link} from "react-router-dom";
-import {useEffect} from "react";
 
 
 const useStyles = makeStyles({
@@ -45,12 +44,7 @@ const useStyles = makeStyles({
 
 export default function GoodsItem (props) {
     const classes = useStyles();
-    // let url = `${props.url}/${props.info.id}`;
     let url = `${props.info.type}/${props.info.id}`;
-    useEffect(() => {
-        console.log(props.info.id, ' - props.info.id');
-
-    } ,[])
 
     return (
         <Card className={classes.root}>
