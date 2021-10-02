@@ -32,19 +32,19 @@ const Cardlist = () => {
         return url
     }
 
-    const axiosGoods = () => {
+    const fetchGoods = () => {
         return axios.get(urlGenerator())
             .then(res => res.json())
     }
 
     useEffect(() => {
         setGoodItems(state => state + 3);
-        axiosGoods().then(data => setState(data));
+        fetchGoods().then(data => setState(data));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-        axiosGoods()
+        fetchGoods()
             .then(data => {
                 if (data.length) setState(data)
             })
