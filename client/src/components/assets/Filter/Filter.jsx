@@ -8,6 +8,7 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -33,8 +34,8 @@ const Filter = ({setGoods, url}) => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api${url}?cost=${cost}&amount=${amount}`)
-      .then(res => res.json())
+    axios.get(`http://localhost:4000/api${url}?cost=${cost}&amount=${amount}`)
+      .then(res => res.data)
       .then(data => {
         let arr = data;
         setGoods(arr);
