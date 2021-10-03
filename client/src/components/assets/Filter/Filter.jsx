@@ -35,7 +35,7 @@ const Filter = ({setGoods, url}) => {
 
   useEffect(() => {
     axios.get(`http://localhost:4000/api${url}?cost=${cost}&amount=${amount}`)
-      .then(res => res.json())
+      .then(res => res.data)
       .then(data => {
         let arr = data;
         setGoods(arr);

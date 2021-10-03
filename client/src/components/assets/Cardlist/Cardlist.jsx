@@ -26,28 +26,20 @@ const Cardlist = () => {
     const [state, setState] = useState([]);
     const [goodItems, setGoodItems] = useState(0);
 
-    function urlGenerator() {
-        let url = new URL("http://localhost:4000/api/categories");
-        url.searchParams.set('item', goodItems);
-        return url
-    }
-
     const fetchGoods = () => {
-        return axios.get(urlGenerator())
-            .then(res => res.json())
+        return axios.get(`http://localhost:4000/api/categories?item=${goodItems}`)
+            .then(res => res.data)
+            .then(data => data.length && setState(data))
     }
 
     useEffect(() => {
         setGoodItems(state => state + 3);
-        fetchGoods().then(data => setState(data));
+        fetchGoods();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         fetchGoods()
-            .then(data => {
-                if (data.length) setState(data)
-            })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [goodItems])
 

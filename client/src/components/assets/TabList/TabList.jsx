@@ -40,9 +40,9 @@ const TabList = ({fetchUrl}) => {
       setIsLoaded(true)
     } else {
       axios.get(fetchUrl)
-        .then(res => res.ok
-          ? res.json()
-          : Promise.reject('Server error ' + res.status)
+        .then(res => res.data
+              ? res.data
+              : Promise.reject('Server error ' + res.status)
         )
         .then(data => {
           localStorage.tabs = JSON.stringify(data);
@@ -53,8 +53,6 @@ const TabList = ({fetchUrl}) => {
         setIsLoaded(true)
       })
     }
-
-
   }, [fetchUrl])
 
 

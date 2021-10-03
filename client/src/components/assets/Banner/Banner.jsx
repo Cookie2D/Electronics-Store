@@ -2,7 +2,6 @@ import React from 'react';
 import TabList from "../TabList/TabList";
 import {Box, Typography} from "@material-ui/core";
 import {createStyles, makeStyles} from "@material-ui/styles";
-import axios from 'axios';
 
 const bannerUrl = "http://localhost:4000/api/banner"
 
@@ -34,7 +33,7 @@ const Banner = () => {
         gutterBottom
       >We are doing such things: </Typography>
 
-      <TabList axiosUrl={bannerUrl}/>
+      <TabList fetchUrl={bannerUrl}/>
     </Box>
   );
 };

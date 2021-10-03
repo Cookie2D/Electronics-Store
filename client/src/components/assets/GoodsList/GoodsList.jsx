@@ -29,7 +29,7 @@ const GoodsList = (props) => {
 
   useEffect(() => {
     axios.get(`http://localhost:4000/api${props.url}`)
-      .then(res => res.json())
+      .then(res => res.data)
       .then(data => {
         if (data.length !== 0) {
           setGoods(data);
