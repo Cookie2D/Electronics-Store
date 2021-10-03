@@ -6,6 +6,7 @@ import {createStyles, makeStyles} from "@material-ui/styles";
 import Characteristic from "../Characteristic/Characteristic";
 import {NavLink} from "react-router-dom";
 import Loader from "../Loader/Loader";
+import {getDataByUrl} from "../../../API/Api";
 
 
 const useStyles = makeStyles(() => createStyles({
@@ -69,10 +70,9 @@ const Product = (props) => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api${props.url}`)
-      .then(res => res.json())
+    getDataByUrl(props.url)
       .then(data => {
-        if (data.length !== 0) {
+        if (data.length) {
           const [item] = data;
           setProduct(item);
           setIsLoaded(true);

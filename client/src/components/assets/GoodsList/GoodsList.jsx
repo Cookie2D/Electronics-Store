@@ -4,7 +4,7 @@ import {Box, CssBaseline, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import GoodsItem from "../GoodsItem/GoodsItem";
 import Filter from "../Filter/Filter";
-import axios from 'axios';
+import {getDataByUrl} from "../../../API/Api";
 
 
 const useStyles = makeStyles({
@@ -28,10 +28,9 @@ const GoodsList = (props) => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api${props.url}`)
-      .then(res => res.data)
+    getDataByUrl(props.url)
       .then(data => {
-        if (data.length !== 0) {
+        if (data.length) {
           setGoods(data);
           setIsLoaded(true)
         }
@@ -44,7 +43,7 @@ const GoodsList = (props) => {
       <Filter setGoods={setGoods} url={props.url}/>
       <CssBaseline/>
       <Loader loaded={isLoaded}>
-      {goods.length === 0 ? (
+      {!goods.length ? (
         <Typography gutterBottom variant="h6">
           НЕМАЄ ІНФОРМАЦІЇ ПО ВАШОМУ ЗАПИТУ
         </Typography>
