@@ -3,7 +3,7 @@ import TabList from "../TabList/TabList";
 import {Box, Typography} from "@material-ui/core";
 import {createStyles, makeStyles} from "@material-ui/styles";
 
-const bannerUrl = "http://localhost:4000/api/banner"
+const bannerUrl = "banner"
 
 const useStyles = makeStyles(() => createStyles({
   mainContainer: {

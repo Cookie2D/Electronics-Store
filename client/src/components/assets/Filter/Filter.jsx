@@ -1,14 +1,7 @@
 import React, {useEffect} from 'react';
-import {
-  AppBar,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Toolbar,
-} from "@material-ui/core";
+import {AppBar, FormControl, InputLabel, MenuItem, Select, Toolbar,} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import axios from 'axios';
+import {getFilteredGoods} from "../../../API/Api";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -34,12 +27,8 @@ const Filter = ({setGoods, url}) => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api${url}?cost=${cost}&amount=${amount}`)
-      .then(res => res.data)
-      .then(data => {
-        let arr = data;
-        setGoods(arr);
-      });
+    getFilteredGoods(url, cost, amount)
+      .then(data => setGoods(data));
     // eslint-disable-next-line
   }, [cost, amount]);
 

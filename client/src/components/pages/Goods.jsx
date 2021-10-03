@@ -6,7 +6,6 @@ import {Container} from "@material-ui/core";
 import GoodsList from "../assets/GoodsList/GoodsList";
 
 
-
 const Goods = (props) => {
 
     return (
